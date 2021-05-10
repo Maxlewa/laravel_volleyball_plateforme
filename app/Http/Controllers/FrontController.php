@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Player;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -11,10 +13,16 @@ class FrontController extends Controller
     }
 
     public function teams() {
-        return view('pages.teams');
+        $teams = Team::all();
+        return view('pages.teams', compact('teams'));
     }
 
     public function players() {
-        return view('pages.players');
+        $players = Player::all();
+        return view('pages.players', compact('players'));
+    }
+
+    public function adminHome() {
+        return view('admin.adminHome');
     }
 }
