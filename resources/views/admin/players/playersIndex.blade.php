@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="text-center mt-4">
-        <h1>PLAYERS</h1>
+        <h1>PLAYERS - ADMIN</h1>
         <hr>
     </div>
     <div class="container mb-4">
@@ -38,7 +38,7 @@
     </div>
     <div class="text-center mt-4 mb-4">
         <a href={{route('home')}} class="btn btn-dark mx-2">HOME</a>
-        <a href={{route('teams')}} class="btn btn-primary mx-2">TEAMS</a>
+        <a href={{route('teams.index')}} class="btn btn-primary mx-2">TEAMS</a>
     </div>
     
 @endsection

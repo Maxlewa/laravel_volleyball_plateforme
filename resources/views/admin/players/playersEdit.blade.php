@@ -38,15 +38,6 @@
             <input type="text" class="form-control" id="country" name="country" value="{{$player->country}}">
         </div>
 
-        {{-- <div class="form-group">
-            <label for="color">Genre</label>
-            <select class="form-control" id="genre" name="color_id">
-                @foreach ($colors as $color)
-                <option {{ $color->nom == $car->color->nom ? 'selected' : '' }} value="{{ $color->id }}">{{ $color->nom }}</option>       
-                @endforeach  
-            </select>
-        </div> --}}
-
         {{-- GENRE --}}
 
         <div class="form-group">
@@ -86,14 +77,7 @@
             <label for="photo" class="mr-2">Photo - File</label>
             <input type="file" name="photo" id="photo">
         </div>
-        {{-- <div>
-            <label for="photo">Photo - URL</label>
-            <input type="text" name="photo" id="photo">
-        </div> --}}
 
-        
-        
-        
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 @endsection

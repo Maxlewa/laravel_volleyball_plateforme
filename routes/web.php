@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
 /* ____________________ FRONT ____________________ */
@@ -17,3 +18,4 @@ Route::get('/players', [FrontController::class, 'players'])->name('players');
 Route::get('/admin', [FrontController::class, 'adminHome'])->name('adminHome');
 
 Route::resource('admin/players', PlayerController::class);
+Route::resource('admin/teams', TeamController::class);

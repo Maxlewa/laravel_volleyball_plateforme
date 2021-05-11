@@ -56,7 +56,6 @@ class PlayerController extends Controller
         $player->phone = $request->phone;
         $player->email = $request->email;
         $player->country = $request->country;
-        // $player->photo = $request->photo;
         $player->genre_id = $request->genre_id;
         $player->role_id = $request->role_id;
         $player->team_id = $request->team_id;
@@ -84,7 +83,10 @@ class PlayerController extends Controller
      */
     public function edit(Player $player)
     {
-        //
+        $genres = Genre::all();
+        $roles = Role::all();
+        $teams = Team::all();
+        return view('admin.players.playersEdit', compact('player', 'genres', 'roles', 'teams'));
     }
 
     /**
@@ -96,7 +98,25 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
-        //
+        $content = file_get_contents($request->photo);
+        $name = substr($request->photo, strrpos($request->photo, '/') +1);
+        Storage::put('public/img/'.$name , $content);
+
+        $player->photo = $name;
+        
+        $player->nom = $request->nom;
+        $player->prenom = $request->prenom;
+        $player->age = $request->age;
+        $player->phone = $request->phone;
+        $player->email = $request->email;
+        $player->country = $request->country;
+        // $player->photo = $request->photo;
+        $player->genre_id = $request->genre_id;
+        $player->role_id = $request->role_id;
+        $player->team_id = $request->team_id;
+        
+        $player->save();
+        return redirect()->route('players.index');
     }
 
     /**
