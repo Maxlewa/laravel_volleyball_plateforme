@@ -25,7 +25,8 @@ class TeamController extends Controller
      */
     public function create()
     {
-        //
+        $teams = Team::all();
+        return view('admin.players.playersCreate', compact('teams'));
     }
 
     /**
@@ -36,7 +37,15 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $team = new Team();
+        $team->nom = $request->nom;
+        $team->ville = $request->ville;
+        $team->pays = $request->pays;
+        $team->continent = $request->continent;
+        $team->max = $request->max;
+        
+        $team->save();
+        return redirect()->route('teams.index');
     }
 
     /**
@@ -47,7 +56,7 @@ class TeamController extends Controller
      */
     public function show(Team $team)
     {
-        //
+        return view('admin.teams.teamsShow', compact('team'));
     }
 
     /**
@@ -58,7 +67,7 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        //
+        return view('admin.players.playersEdit', compact('team'));
     }
 
     /**
@@ -70,7 +79,14 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
-        //
+        $team->nom = $request->nom;
+        $team->ville = $request->ville;
+        $team->pays = $request->pays;
+        $team->continent = $request->continent;
+        $team->max = $request->max;
+        
+        $team->save();
+        return redirect()->route('teams.index');
     }
 
     /**
@@ -81,6 +97,7 @@ class TeamController extends Controller
      */
     public function destroy(Team $team)
     {
-        //
+        $team->delete();
+        return redirect()->route('teams.index');
     }
 }
