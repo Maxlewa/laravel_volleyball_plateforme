@@ -62,7 +62,7 @@ class PlayerController extends Controller
         $player->team_id = $request->team_id;
         
         $player->save();
-        return redirect()->route('adminHome');
+        return redirect()->route('players.index');
     }
 
     /**
@@ -108,6 +108,6 @@ class PlayerController extends Controller
     public function destroy(Player $player)
     {
         $player->delete();
-        return redirect()->back();
+        return redirect()->route('players.index');
     }
 }

@@ -5,7 +5,7 @@
         <h1>PLAYERS</h1>
         <hr>
     </div>
-    <div class="container">
+    <div class="container mb-4">
         <div class="row">
             @foreach ($players as $player)           
             <div class="col-3 border pt-4">
@@ -31,12 +31,12 @@
             </div>
             @endforeach
         </div>
-
     </div>
+
     <div class="text-center">
         <a href={{route('players.create')}} class="btn btn-success">NEW PLAYER</a>
     </div>
-    <div class="text-center mt-4">
+    <div class="text-center mt-4 mb-4">
         <a href={{route('home')}} class="btn btn-dark mx-2">HOME</a>
         <a href={{route('teams')}} class="btn btn-primary mx-2">TEAMS</a>
     </div>

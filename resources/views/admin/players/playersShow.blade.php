@@ -21,15 +21,16 @@
             <p>{{$player->country}}</p>
             <hr>
             <h4 class="font-weight-bold">Photo</h4>
+            <img width="100%" src={{asset('storage/img/' . $player->photo)}} alt="Player Photo">
         </div>
-        <div class="d-flex justify-content-center mt-4">
+        <div class="d-flex justify-content-center mt-4 mb-4">
             <a href="{{route('players.edit', $player->id)}}"><button class="btn btn-primary">Edit</button></a>
             <form method="post" action="{{route('players.destroy', $player->id)}}">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger mx-1" type="submit">Delete</button>
             </form>
-            <a href="{{route('adminHome')}}"><button class="btn btn-dark">Retour</button></a>
+            <a href="{{route('players.index')}}"><button class="btn btn-dark">Retour</button></a>
         </div>
     </div>
 @endsection

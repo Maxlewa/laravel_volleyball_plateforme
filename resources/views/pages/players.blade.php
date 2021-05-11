@@ -28,7 +28,7 @@
         </div>
 
     </div>
-    <div class="text-center mt-4">
+    <div class="text-center mt-4 mb-4">
         <a href={{route('home')}} class="btn btn-dark mx-2">HOME</a>
         <a href={{route('teams')}} class="btn btn-primary mx-2">TEAMS</a>
     </div>
