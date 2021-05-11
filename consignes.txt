@@ -6,13 +6,13 @@ Pour une compétition de volleyball, il faut réaliser un site internet (plate-f
 ## 1) Détails téchniques
 **Chaque équipes à : **
 
-nom de club, une ville qu'elle représente , un pays et un maximum de joueur possible dans leur équipe et par role (ne pas dépasser max 6 joueurs)*, continent_id (pour déterminer dans quel contient l'équipe joue) 
+nom de club, une ville qu'elle représente , un pays et un maximum de joueur possible dans leur équipe (ne pas dépasser max 6 joueurs)*, continent (pour déterminer dans quel contient l'équipe joue) 
 
 >exemple :
 >MolenVolley, bruxelles, belgique, 12max, europe
 
 **Les joueurs peut être rajoutés dans la plateforme :**
-un nom , prénom, age, téléphone, email, un genre, un pays d'origine, rôle_id dans une partie ( avant, central, arrière, remplaçant ), une equipe_id et une photo_id
+un nom , prénom, age, téléphone, email, un genre, un pays d'origine, rôle dans une partie ( avant, central, arrière, remplaçant ), une equipe et une photo
 
 > Evidemment une équipe/joueur peut être supprimé, modifié, ajouté (crud complet). Attention, suppression joueur = suppression photo (cascade)
 > Si l'équipe n'a plus de place dans un poste alors le joueur ne peut pas être rajouter et on reçoit un message pour nous en prévenir(flash)
