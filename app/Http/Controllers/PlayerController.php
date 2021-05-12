@@ -43,6 +43,19 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            "photo" => ["required", "mimes:jpg, jpeg, png", "max:5000"],
+            "nom" => ["required"],
+            "prenom" => ["required"],
+            "age" => ["required", "numeric"],
+            "phone" => ["required", "numeric"],
+            "email" => ["required", "email"],
+            "country" => ["required"],
+            "genre_id" => ["required"],
+            "role_id" => ["required"],
+            "team_id" => ["required"],
+        ]);
+
         $content = file_get_contents($request->photo);
         $name = substr($request->photo, strrpos($request->photo, '/') +1);
         Storage::put('public/img/'.$name , $content);
@@ -61,7 +74,7 @@ class PlayerController extends Controller
         $player->team_id = $request->team_id;
         
         $player->save();
-        return redirect()->route('players.index');
+        return redirect()->route('players.index')->with('success', $request->prenom . ' a bien été créé');
     }
 
     /**

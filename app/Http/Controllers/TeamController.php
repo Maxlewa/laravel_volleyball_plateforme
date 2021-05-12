@@ -37,6 +37,14 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            "nom" => ["required"],
+            "ville" => ["required"],
+            "pays" => ["required"],
+            "continent" => ["required"],
+            "max" => ["required", "numeric"],
+        ]);
+        
         $team = new Team();
         $team->nom = $request->nom;
         $team->ville = $request->ville;
@@ -45,7 +53,7 @@ class TeamController extends Controller
         $team->max = $request->max;
         
         $team->save();
-        return redirect()->route('teams.index');
+        return redirect()->route('teams.index')->with('success', $request->nom . ' a bien été créé');
     }
 
     /**
