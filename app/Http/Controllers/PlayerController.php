@@ -122,16 +122,10 @@ class PlayerController extends Controller
             "team_id" => ["required"],
         ]);
 
-        // $request->file('photo')->storePublicly('img/', 'public');
-        // $player->photo = $request->file('photo')->hashName();
-
         if ($request->file('photo') != null) {
             $request->file('photo')->storePublicly('img/', 'public');
             $player->photo = $request->file('photo')->hashName();
         }
-
-        // $request->file('photo')->storePublicly('img/', 'public');
-        // $player->photo = $request->file('photo')->hashName();
         
         $player->nom = $request->nom;
         $player->prenom = $request->prenom;
