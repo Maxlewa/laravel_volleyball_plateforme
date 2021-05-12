@@ -75,7 +75,12 @@
 
         <div class="my-4">
             <label for="photo" class="mr-2">Photo - File</label>
-            <input type="file" name="photo" id="photo">
+            <input type="file" name="photo">
+            @error('photo')
+            <span class="invalid-feedback">
+                <strong>{{$message}}</strong>
+            </span>
+        @enderror
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

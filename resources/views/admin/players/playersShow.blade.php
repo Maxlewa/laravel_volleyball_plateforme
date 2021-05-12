@@ -21,7 +21,7 @@
             <p>{{$player->country}}</p>
             <hr>
             <h4 class="font-weight-bold">Photo</h4>
-            <img width="100%" src={{asset('storage/img/' . $player->photo)}} alt="Player Photo">
+            <img width="100%" src={{asset('img/' . $player->photo)}} alt="Player Photo">
         </div>
         <div class="d-flex justify-content-center mt-4 mb-4">
             <a href="{{route('players.edit', $player->id)}}"><button class="btn btn-primary">Edit</button></a>

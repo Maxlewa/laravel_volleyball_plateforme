@@ -58,16 +58,8 @@ class PlayerController extends Controller
 
         $player = new Player();
 
-        // $content = file_get_contents($request->photo);
-        // $name = substr($request->photo, strrpos($request->photo, '/') +1);
-        // Storage::put('public/img/'.$name , $content);
-
-        // dd($request->file('photo'));
-        
         $request->file('photo')->storePublicly('img/', 'public');
         $player->photo = $request->file('photo')->hashName();
-
-        // $player->photo = $name;
         
         $player->nom = $request->nom;
         $player->prenom = $request->prenom;
@@ -118,7 +110,7 @@ class PlayerController extends Controller
     public function update(Request $request, Player $player)
     {
         request()->validate([
-            "photo" => ["required", "mimes:jpg, jpeg, png", "max:5000"],
+            "photo" => ["mimes:jpg, jpeg, png", "max:5000"],
             "nom" => ["required"],
             "prenom" => ["required"],
             "age" => ["required", "numeric"],
@@ -130,11 +122,16 @@ class PlayerController extends Controller
             "team_id" => ["required"],
         ]);
 
-        $content = file_get_contents($request->photo);
-        $name = substr($request->photo, strrpos($request->photo, '/') +1);
-        Storage::put('public/img/'.$name , $content);
+        // $request->file('photo')->storePublicly('img/', 'public');
+        // $player->photo = $request->file('photo')->hashName();
 
-        $player->photo = $name;
+        if ($request->file('photo') != null) {
+            $request->file('photo')->storePublicly('img/', 'public');
+            $player->photo = $request->file('photo')->hashName();
+        }
+
+        // $request->file('photo')->storePublicly('img/', 'public');
+        // $player->photo = $request->file('photo')->hashName();
         
         $player->nom = $request->nom;
         $player->prenom = $request->prenom;
@@ -142,11 +139,11 @@ class PlayerController extends Controller
         $player->phone = $request->phone;
         $player->email = $request->email;
         $player->country = $request->country;
-        // $player->photo = $request->photo;
         $player->genre_id = $request->genre_id;
         $player->role_id = $request->role_id;
         $player->team_id = $request->team_id;
         
+
         $player->save();
         return redirect()->route('players.index')->with('success', 'Modifications enregistrées');
     }
