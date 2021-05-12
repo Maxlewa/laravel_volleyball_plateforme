@@ -26,7 +26,7 @@ class TeamController extends Controller
     public function create()
     {
         $teams = Team::all();
-        return view('admin.players.playersCreate', compact('teams'));
+        return view('admin.teams.teamsCreate', compact('teams'));
     }
 
     /**
@@ -67,7 +67,7 @@ class TeamController extends Controller
      */
     public function edit(Team $team)
     {
-        return view('admin.players.playersEdit', compact('team'));
+        return view('admin.teams.teamsEdit', compact('team'));
     }
 
     /**
@@ -79,6 +79,14 @@ class TeamController extends Controller
      */
     public function update(Request $request, Team $team)
     {
+        request()->validate([
+            "nom" => ["required"],
+            "ville" => ["required"],
+            "pays" => ["required"],
+            "continent" => ["required"],
+            "max" => ["required", "numeric"],
+        ]);
+
         $team->nom = $request->nom;
         $team->ville = $request->ville;
         $team->pays = $request->pays;
@@ -86,7 +94,7 @@ class TeamController extends Controller
         $team->max = $request->max;
         
         $team->save();
-        return redirect()->route('teams.index');
+        return redirect()->route('teams.index')->with('success', 'Modifications enregistrées');
     }
 
     /**

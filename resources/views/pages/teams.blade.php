@@ -9,16 +9,16 @@
         <div class="row">
             @foreach ($teams as $team)           
             <div class="col-3 border pt-3">
-                <h4 class="font-weight-bold">Club</h4>
+                <h4 class="font-weight-bold text-primary">Club</h4>
                 <h5>{{$team->nom}}</h3>
                 <hr>
-                <h4 class="font-weight-bold">City</h4>
+                <h4 class="font-weight-bold text-primary">City</h4>
                 <p>{{$team->ville}}</p>
                 <hr>
-                <h4 class="font-weight-bold">Country</h4>
+                <h4 class="font-weight-bold text-primary">Country</h4>
                 <p>{{$team->pays}}</p>
                 <hr>
-                <h4 class="font-weight-bold">Continent</h4>
+                <h4 class="font-weight-bold text-primary">Continent</h4>
                 <p>{{$team->continent}}</p>
             </div>
             @endforeach

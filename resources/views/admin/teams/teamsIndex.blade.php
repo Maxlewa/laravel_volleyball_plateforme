@@ -1,5 +1,7 @@
 @extends('layouts.index')
 
+@include('layouts.flash')
+
 @section('content')
     <div class="text-center mt-4">
         <h1>TEAMS - ADMIN</h1>

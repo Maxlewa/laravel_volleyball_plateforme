@@ -9,7 +9,7 @@
             <h3>{{$team->nom}}</h3>
             <hr>
             <h4 class="font-weight-bold">Ville</h4>
-            <p>{{$team->ville}} ans</p>
+            <p>{{$team->ville}}</p>
             <hr>
             <h4 class="font-weight-bold">Country</h4>
             <p>{{$team->pays}}</p>
