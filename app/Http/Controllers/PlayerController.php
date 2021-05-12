@@ -56,12 +56,18 @@ class PlayerController extends Controller
             "team_id" => ["required"],
         ]);
 
-        $content = file_get_contents($request->photo);
-        $name = substr($request->photo, strrpos($request->photo, '/') +1);
-        Storage::put('public/img/'.$name , $content);
-
         $player = new Player();
-        $player->photo = $name;
+
+        // $content = file_get_contents($request->photo);
+        // $name = substr($request->photo, strrpos($request->photo, '/') +1);
+        // Storage::put('public/img/'.$name , $content);
+
+        // dd($request->file('photo'));
+        
+        $request->file('photo')->storePublicly('img/', 'public');
+        $player->photo = $request->file('photo')->hashName();
+
+        // $player->photo = $name;
         
         $player->nom = $request->nom;
         $player->prenom = $request->prenom;

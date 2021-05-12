@@ -26,7 +26,7 @@
                 <h4 class="font-weight-bold">Country</h4>
                 <p>{{$player->country}}</p>
                 <h4 class="font-weight-bold">Photo</h4>
-                <img width="100%" src={{asset('storage/img/' . $player->photo)}} alt="Player Photo">
+                <img width="100%" src={{asset('img/' . $player->photo)}} alt="Player Photo">
                 <div class="text-center my-4">
                     <a href="{{route('players.show', $player->id)}}" class="btn btn-warning">SHOW</a>
                 </div>
